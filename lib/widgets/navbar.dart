@@ -24,9 +24,11 @@ class _DesktopNavLinks extends StatelessWidget {
         _navLink('Login', context),
         const SizedBox(width: 20),
 
-        // Button in Navbar
+        // Button in Navbar → now navigates to AppointmentPage
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('/appointment'); // ✅ navigate
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: ThemeColors.accentDark,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
@@ -81,7 +83,25 @@ class _MobileNavbar extends StatelessWidget {
             icon: const Icon(Icons.menu, color: ThemeColors.textDark),
             iconSize: 30,
             onPressed: () {
-              // TODO: Implement showing a Drawer or a modal menu for links
+              showModalBottomSheet(
+                context: context,
+                builder: (_) {
+                  return Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ListTile(
+                        title: const Text('Home'),
+                        onTap: () => Navigator.of(context).pushNamed('/'),
+                      ),
+                      ListTile(
+                        title: const Text('Book Appointment'),
+                        onTap: () =>
+                            Navigator.of(context).pushNamed('/appointment'),
+                      ),
+                    ],
+                  );
+                },
+              );
             },
           ),
         ],

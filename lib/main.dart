@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'theme/themecolors.dart';
 import 'pages/homepage.dart';
+import 'pages/appointmentpage.dart';
 
 void main() {
   runApp(const HospitalWebApp());
@@ -22,13 +23,16 @@ class HospitalWebApp extends StatelessWidget {
           onPrimary: ThemeColors.textLight,
           onSurface: ThemeColors.textDark,
         ),
-        textTheme: Theme.of(context).textTheme.apply(
+        textTheme: Typography.blackMountainView.apply(
           bodyColor: ThemeColors.textDark,
           displayColor: ThemeColors.textDark,
         ),
       ),
       initialRoute: '/',
-      routes: {'/': (context) => const HomePage()},
+      routes: {
+        '/': (context) => const HomePage(),
+        '/appointment': (context) => const AppointmentPage(),
+      },
     );
   }
 }
