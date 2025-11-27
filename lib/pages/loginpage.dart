@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: ThemeColors.secondary,
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Sign in / Sign up'),
         backgroundColor: ThemeColors.secondary,
         elevation: 0,
       ),

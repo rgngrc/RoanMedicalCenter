@@ -7,7 +7,7 @@ import 'pages/appointmentpage.dart';
 import 'pages/laboratoryresultpage.dart';
 import 'pages/patientportaldashboard.dart';
 // import 'pages/aboutuspage.dart';
-// import 'pages/servicespage.dart';
+import 'pages/servicespage.dart';
 import 'pages/doctorspage.dart';
 
 void main() {
@@ -41,7 +41,7 @@ class HospitalWebApp extends StatelessWidget {
         '/login': (context) => const LoginPage(),
         '/signup': (context) => const SignupPage(),
         // '/about': (context) => const AboutUsPage(),
-        // '/services': (context) => const ServicesPage(),
+        '/services': (context) => const ServicesPage(),
         '/doctors': (context) => const DoctorsPage(),
         // '/contactus': (context) => const ContactUsPage(),
         '/appointment': (context) => const AppointmentPage(),
