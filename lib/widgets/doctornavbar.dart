@@ -29,7 +29,7 @@ class DoctorNavBar extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              // Logout: go back to login page and reset auth if needed
+              // Logout
               Navigator.popUntil(context, (route) => route.isFirst);
             },
             style: ElevatedButton.styleFrom(

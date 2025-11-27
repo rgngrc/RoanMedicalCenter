@@ -4,6 +4,9 @@ import '../theme/themecolors.dart';
 import '../widgets/doctornavbar.dart';
 import '../utils/auth.dart';
 
+const Color _kSuccessColor = Color(0xFF4CAF50);
+const Color _kDangerColor = Color(0xFFD32F2F);
+
 class DoctorDashboard extends StatefulWidget {
   const DoctorDashboard({super.key});
 
@@ -43,13 +46,17 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
     }
 
     return Scaffold(
-      backgroundColor: ThemeColors.secondary.withOpacity(0.05),
+      backgroundColor: ThemeColors.primary,
       body: Column(
         children: [
-          const DoctorNavBar(), // simple logout navbar
+          const DoctorNavBar(),
+
           const SizedBox(height: 20),
+
           const HeroSection(),
+
           const SizedBox(height: 20),
+
           Expanded(
             child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -69,32 +76,40 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
     return Column(
       children: appointments.map((app) {
         final patient = app["patient"] ?? "Unknown";
-        final time = app["time"] ?? "Not set";
-        final condition = app["condition"] ?? "No condition";
-        final notes = app["notes"] ?? "No notes";
-        final status = app["status"] ?? "Pending";
+        final isPending = app["status"] == "Pending";
 
         return Card(
           margin: const EdgeInsets.symmetric(vertical: 8),
+          elevation: 3,
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ListTile(
-                  leading: const Icon(
+                  leading: Icon(
                     Icons.calendar_today_outlined,
                     color: ThemeColors.accent,
                   ),
-                  title: Text(patient),
+                  title: Text(app["patient"] ?? "Unknown"),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const SizedBox(height: 4),
-                      Text("Appointment: $time"),
-                      Text("Condition: $condition"),
-                      Text("Notes: $notes"),
-                      Text("Status: $status"),
+                      Text("Appointment: ${app["time"] ?? "Not set"}"),
+                      Text("Condition: ${app["condition"] ?? "No condition"}"),
+                      Text("Notes: ${app["notes"] ?? "No notes"}"),
+                      Text(
+                        "Status: ${app["status"] ?? "Pending"}",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: app["status"] == "Approved"
+                              ? _kSuccessColor
+                              : app["status"] == "Declined"
+                              ? _kDangerColor
+                              : ThemeColors.secondaryDark,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -102,19 +117,25 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    // Approve Button
                     ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          app["status"] = "Approved";
-                        });
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("$patient appointment approved"),
-                          ),
-                        );
-                      },
+                      onPressed: isPending
+                          ? () {
+                              setState(() {
+                                app["status"] = "Approved";
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    "$patient appointment approved",
+                                  ),
+                                ),
+                              );
+                            }
+                          : null,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
+                        backgroundColor: _kSuccessColor,
+                        foregroundColor: ThemeColors.textLight,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
                           vertical: 6,
@@ -126,19 +147,25 @@ class _DoctorDashboardState extends State<DoctorDashboard> {
                       ),
                     ),
                     const SizedBox(width: 8),
+                    // Decline Button
                     ElevatedButton(
-                      onPressed: () {
-                        setState(() {
-                          app["status"] = "Declined";
-                        });
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("$patient appointment declined"),
-                          ),
-                        );
-                      },
+                      onPressed: isPending
+                          ? () {
+                              setState(() {
+                                app["status"] = "Declined";
+                              });
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                    "$patient appointment declined",
+                                  ),
+                                ),
+                              );
+                            }
+                          : null,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.red,
+                        backgroundColor: _kDangerColor,
+                        foregroundColor: ThemeColors.textLight,
                         padding: const EdgeInsets.symmetric(
                           horizontal: 12,
                           vertical: 6,
@@ -168,9 +195,9 @@ class HeroSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 12),
+      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
       decoration: BoxDecoration(
-        color: ThemeColors.primary.withOpacity(0.1),
+        color: ThemeColors.secondary.withOpacity(0.1),
         borderRadius: BorderRadius.circular(12),
       ),
       child: const Center(

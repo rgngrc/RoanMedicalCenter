@@ -67,7 +67,7 @@ class _DesktopNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[_HospitalLogo(), _DesktopNavLinks()],
@@ -169,7 +169,7 @@ class _HospitalLogo extends StatelessWidget {
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
-            color: ThemeColors.secondaryDark,
+            color: ThemeColors.secondary,
           ),
         ),
       ],

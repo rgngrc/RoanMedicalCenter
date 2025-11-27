@@ -28,13 +28,23 @@ class _AppointmentPageState extends State<AppointmentPage> {
     "Cardiology",
     "Emergency Care",
     "Laboratory",
+    'Dermatology',
+    "Surgeon",
   ];
 
   final List<String> doctors = [
-    "Dr. Roan Reyes",
     "Dr. Maria Santos",
-    "Dr. Julio Dizon",
+    'Dr. Mark Villanueva',
     "Dr. Anne Grace",
+    'Dr. Maria Santos',
+    'Dr. John Reyes',
+    'Dr. Angela Cruz',
+    'Dr. Liza Gomez',
+    'Dr. Paolo Diaz',
+    'Dr. Nina Morales',
+    'Dr. Carlo Ramos',
+    'Dr. Emma Torres',
+    'Dr. Victor Lim',
   ];
 
   @override

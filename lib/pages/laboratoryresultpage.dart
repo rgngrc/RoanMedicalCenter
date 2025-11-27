@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../theme/themecolors.dart';
 import '../widgets/portalnavbar.dart';
 import '../widgets/responsive.dart';
-import '../widgets/footer.dart';
 
 class LaboratoryResultPage extends StatelessWidget {
   const LaboratoryResultPage({super.key});
@@ -14,17 +13,11 @@ class LaboratoryResultPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            // 1. Navigation Bar
             const PortalNavBar(),
 
-            // 2. Hero Section
             const HeroSection(),
 
-            // 3. Laboratory Results Section
             const LaboratoryResultsSection(),
-
-            // 4. Footer
-            const Footer(),
           ],
         ),
       ),
@@ -39,91 +32,22 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 400,
       width: double.infinity,
+      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
       decoration: BoxDecoration(
-        image: DecorationImage(
-          image: const AssetImage('assets/images/hero.jpg'),
-          fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-            Colors.black.withOpacity(0.2),
-            BlendMode.darken,
-          ),
-        ),
+        color: ThemeColors.secondary.withOpacity(0.1),
+        borderRadius: BorderRadius.circular(12),
       ),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(30.0),
-          child: Responsive(
-            desktop: _HeroContentDesktop(),
-            mobile: _HeroContentMobile(),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _HeroContentDesktop extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Flexible(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Laboratory Results",
-                style: TextStyle(
-                  fontSize: 50,
-                  fontWeight: FontWeight.w900,
-                  color: ThemeColors.textLight,
-                  height: 1.1,
-                ),
-              ),
-              SizedBox(height: 20),
-              Text(
-                "Check your latest laboratory tests and health records here.",
-                style: TextStyle(fontSize: 20, color: ThemeColors.textLight),
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class _HeroContentMobile extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: const [
-        Text(
-          "Laboratory Results",
-          textAlign: TextAlign.center,
+      child: const Center(
+        child: Text(
+          "Laboratory Result",
           style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.w900,
-            color: ThemeColors.textLight,
-            height: 1.1,
+            fontSize: 32,
+            fontWeight: FontWeight.bold,
+            color: ThemeColors.textDark,
           ),
         ),
-        SizedBox(height: 15),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            "Check your latest laboratory tests and health records here.",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: ThemeColors.textLight),
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
@@ -135,18 +59,9 @@ class LaboratoryResultsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 40),
+      padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 40),
       child: Column(
         children: <Widget>[
-          const Text(
-            "Laboratory Results",
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              color: ThemeColors.textDark,
-            ),
-          ),
-          const SizedBox(height: 20),
           Text(
             "Here are your latest laboratory results.",
             style: TextStyle(fontSize: 20, color: ThemeColors.secondary),
@@ -161,7 +76,6 @@ class LaboratoryResultsSection extends StatelessWidget {
   }
 }
 
-// Helper function to create table with dynamic content
 Widget labTable(String title, List<List<String>> rowsData, String Date) {
   return Card(
     elevation: 3,
