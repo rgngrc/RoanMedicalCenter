@@ -17,7 +17,6 @@ class Footer extends StatelessWidget {
     try {
       Navigator.of(context).pushNamed(routeName);
     } catch (e) {
-      // ignore: avoid_print
       print('Navigation error: $e');
     }
   }
@@ -71,7 +70,7 @@ class Footer extends StatelessWidget {
             border: Border.all(color: ThemeColors.accentDark, width: 2),
           ),
           padding: const EdgeInsets.all(8),
-          child: Image.asset('logos/logo.png', fit: BoxFit.contain),
+          child: Image.asset('assets/logos/logo.png', fit: BoxFit.contain),
         ),
         const SizedBox(width: 12),
         const Text(
