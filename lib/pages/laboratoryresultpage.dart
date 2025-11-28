@@ -1,4 +1,4 @@
-// lib/pages/laboratory_result_page.dart
+// lib/pages/laboratoryresultpage.dart
 import 'package:flutter/material.dart';
 import '../theme/themecolors.dart';
 import '../widgets/portalnavbar.dart';

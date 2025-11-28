@@ -35,8 +35,6 @@ class _AppointmentPageState extends State<AppointmentPage> {
   final List<String> doctors = [
     "Dr. Maria Santos",
     'Dr. Mark Villanueva',
-    "Dr. Anne Grace",
-    'Dr. Maria Santos',
     'Dr. John Reyes',
     'Dr. Angela Cruz',
     'Dr. Liza Gomez',
