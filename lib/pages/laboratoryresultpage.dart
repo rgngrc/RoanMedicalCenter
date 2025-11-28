@@ -122,7 +122,7 @@ class _TablesDesktop extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 600), // max width
+        constraints: const BoxConstraints(maxWidth: 600),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -149,7 +149,7 @@ class _TablesDesktop extends StatelessWidget {
   }
 }
 
-// Mobile version: two tables stacked
+// Mobile version
 class _TablesMobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

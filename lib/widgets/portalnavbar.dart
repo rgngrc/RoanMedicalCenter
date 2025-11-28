@@ -151,7 +151,7 @@ class _MobilePortalNavBar extends StatelessWidget {
                             style: TextStyle(color: ThemeColors.textLight),
                           ),
                           onTap: () {
-                            Navigator.pop(context); // Close sheet
+                            Navigator.pop(context);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -172,7 +172,7 @@ class _MobilePortalNavBar extends StatelessWidget {
                             style: TextStyle(color: ThemeColors.textLight),
                           ),
                           onTap: () {
-                            Navigator.pop(context); // Close sheet
+                            Navigator.pop(context);
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -192,7 +192,7 @@ class _MobilePortalNavBar extends StatelessWidget {
                             style: TextStyle(color: ThemeColors.textLight),
                           ),
                           onTap: () {
-                            Navigator.pop(context); // Close sheet
+                            Navigator.pop(context);
                             Auth.logout();
                             Navigator.popUntil(
                               context,
