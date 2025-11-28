@@ -166,7 +166,20 @@ class _HeroContentMobile extends StatelessWidget {
         // Button for patient portal
         ElevatedButton(
           onPressed: () {
-            Navigator.of(context).pushNamed('/patientdashboard');
+            if (Auth.isLoggedIn && Auth.userType == "patient") {
+              // Navigate to patient dashboard
+              Navigator.of(context).pushNamed('/patientdashboard');
+            } else {
+              // If not logged in or not a patient go to login page
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text(
+                    "You must login as a patient to access the portal",
+                  ),
+                ),
+              );
+              Navigator.of(context).pushNamed('/login');
+            }
           },
           style: ElevatedButton.styleFrom(
             backgroundColor: ThemeColors.accentDark,
