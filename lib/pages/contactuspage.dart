@@ -113,13 +113,13 @@ class ContactUsPage extends StatelessWidget {
 
         // Telephone No.
         _buildContactInfoRow(
-          icon: Icons.phone, // Phone Icon
+          icon: Icons.phone, // Telephone Icon
           value: '(049) 534-4026 loc. 100',
         ),
 
         // Cellphone No.
         _buildContactInfoRow(
-          icon: Icons.check_box_outlined,
+          icon: Icons.smartphone, // Smartphone Icon
           value: '0998-551-7216',
         ),
 
