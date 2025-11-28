@@ -2,9 +2,8 @@
 
 class Auth {
   // Simulated logged-in status
-  static bool isLoggedIn = true; // change to false if not logged in
-  static String userType =
-      "patient"; // can be "patient", "doctor", "admin", etc.
+  static bool isLoggedIn = false;
+  static String userType = "patient";
 
   // Simulated patient info
   static String? userName = "John Doe";
